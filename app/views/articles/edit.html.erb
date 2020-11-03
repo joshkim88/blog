@@ -1,6 +1,26 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top";>
+  <a class="navbar-brand" href="#"><%= link_to 'Home', controller: 'articles' %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="#">
+        <% if current_user %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to  "Sign Up", new_user_registration_path %>
+          <% end %>
+      </a>
+    </div>
+  </div>
+</nav>
 
-<h1>Edit Article</h1>
 
-<%= render 'form' %>
+<h1 class="text-center pt-5">Edit Article</h1>
 
-<%= link_to 'Back', articles_path %>
+<div class="text-center pt-3">
+  <%= render 'form' %>
+  <%= link_to 'Back', articles_path %>
+</div>

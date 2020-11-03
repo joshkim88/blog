@@ -2,7 +2,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
-
   def create
     user_signed_in?
     @article = Article.find(params[:article_id])
