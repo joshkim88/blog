@@ -1,7 +1,6 @@
 
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -12,14 +11,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    user_signed_in?
     @article = Article.new
   end
 
   def edit
+    user_signed_in?
     @article = Article.find(params[:id])
   end
 
   def create
+    user_signed_in?
     @article = Article.new(article_params)
 
     if @article.save
@@ -30,6 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    user_signed_in?
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -40,6 +43,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    user_signed_in?
     @article = Article.find(params[:id])
     @article.destroy
 
