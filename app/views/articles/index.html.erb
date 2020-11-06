@@ -26,14 +26,17 @@
   <table class="table text-center">
   <tr>
     <th>Title</th>
-    <th>Text</th>
+    <th></th>
     <th></th>
   </tr>
 
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
-      <td><%= link_to 'Full article', article_path(article) %></td>
+      <td><% if policy(article).show? %>
+          <%= link_to 'Show', article %>
+          <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

@@ -29,4 +29,10 @@
     <%= form.submit %>
   </p>
 
+  <p>
+    <% if policy(Article).create? %>
+      <%= link_to "New Article", new_article_path %>
+    <% end %>
+  </p>
+
 <% end %>

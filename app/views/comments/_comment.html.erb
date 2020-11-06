@@ -1,7 +1,7 @@
 
 
 <p>
-  <%= comment.commenter %>
+  <%= current_user %>:
   <%= comment.body %>
   <%= link_to 'delete', [comment.article, comment],
                method: :delete,
