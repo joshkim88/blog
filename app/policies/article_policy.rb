@@ -1,4 +1,3 @@
-
 class ArticlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -6,19 +5,27 @@ class ArticlePolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true  # Anyone can view a restaurant
-  end
-
   def create?
-    true  # Anyone can create a restaurant
+    true  # Anyone can create a article
   end
 
-  def update?
-    false
+  def show?
+    true  # Anyone can view a article
+  end
+
+  # def edit?
+  #   if user == record.user
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
+
+  def edit?
+    record.user == user
   end
 
   def destroy?
-    false
+    record.user == user
   end
 end
